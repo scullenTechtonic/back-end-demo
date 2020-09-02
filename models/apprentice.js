@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       validate: {
         isNumeric: true,
-        len: [9, 9]
+        len: [10, 10]
       }
     },
     groupNumber: {
@@ -35,7 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  Apprentice.associate = (models) => {
+  Apprentice.associate = models => {
     Apprentice.belongsTo(models.Instructor, {
       foreignKey: {
         allowNull: false

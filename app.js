@@ -5,6 +5,9 @@ const app = express();
 const { sequelize } = require("./models");
 const port = process.env.PORT || 3001;
 
+const instructorController = require("./controllers/instructorController");
+const apprenticeController = require("./controllers/apprenticeController");
+
 
 // # sets up morgan to log requests/status codes
 app.use(logger("dev"));
@@ -16,8 +19,8 @@ app.use(express.json());
 // # sets up a middleware to check the folder below for requests first
 app.use(express.static("public"));
 
-// app.use("/instructors", instructorController);
-// app.use("/students", studentController);
+app.use("/api/instructors", instructorController);
+app.use("/api/apprentices", apprenticeController);
 
 sequelize.sync().then(() => {
   app.listen(port, () => {
