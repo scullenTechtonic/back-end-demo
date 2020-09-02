@@ -1,9 +1,11 @@
+// # packages
 const express = require("express");
 const logger = require("morgan");
 
+// #
 const app = express();
-const { sequelize } = require("./models");
 const port = process.env.PORT || 3001;
+const { sequelize } = require("./models");
 
 const instructorController = require("./controllers/instructorController");
 const apprenticeController = require("./controllers/apprenticeController");

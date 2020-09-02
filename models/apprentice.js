@@ -1,4 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
+  // # here we define an Apprentice model, which will generate/sync up with the Apprentices (note the plural) table in our database
   const Apprentice = sequelize.define("Apprentice", {
     firstName: {
       type: DataTypes.STRING,
@@ -35,13 +36,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
+  // # associations are necessary to run SQL joins via Sequelize
   Apprentice.associate = models => {
     Apprentice.belongsTo(models.Instructor, {
       foreignKey: {
         allowNull: false
       }
     });
-  } 
+  }
 
+  // ! CRUCIAL - we must always return the completed model to the Sequelize "brain"
   return Apprentice;
 }
