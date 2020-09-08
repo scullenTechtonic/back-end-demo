@@ -1,15 +1,14 @@
-// # packages
+// # requiring packages
 const express = require("express");
 const logger = require("morgan");
 
-// #
+// # app setup/requiring routes
 const app = express();
 const port = process.env.PORT || 3001;
 const { sequelize } = require("./models");
 
 const instructorController = require("./controllers/instructorController");
 const apprenticeController = require("./controllers/apprenticeController");
-
 
 // # sets up morgan to log requests/status codes
 app.use(logger("dev"));
